@@ -1,12 +1,32 @@
 
 .default: all
 
-all: sim
+all: fifo sjf rr
 
-clean:
+clean: clean_fifo clean_sjf clean_rr
+
+clean_fifo:
 	rm -rf ppd *.o
 
-sim: Driver.o Loader.o Simulator.o pcb.o 
+clean_sjf:
+	rm -rf ppd *.o
+
+clean_rr:
+	rm -rf ppd *.o
+
+fifo: Driver.o Loader.o Simulator.o pcb.o FIFO.o
+	g++ -Wall -Werror -std=c++14 -g -O -o $@ $^	-lpthread
+
+%.o: %.cpp
+	g++ -Wall -Werror -std=c++14 -g -O -c $^
+
+sjf: Driver.o Loader.o Simulator.o pcb.o SJF.o
+	g++ -Wall -Werror -std=c++14 -g -O -o $@ $^	-lpthread
+
+%.o: %.cpp
+	g++ -Wall -Werror -std=c++14 -g -O -c $^
+
+rr: Driver.o Loader.o Simulator.o pcb.o RR.o
 	g++ -Wall -Werror -std=c++14 -g -O -o $@ $^	-lpthread
 
 %.o: %.cpp

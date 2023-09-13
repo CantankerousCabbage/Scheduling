@@ -2,23 +2,31 @@
  * startup code provided by Paul Miller for COSC1114 - Operating Systems
  * Principles
  **/
-#include "writer.h"
+#include "Writer.h"
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <memory>
+
+using std::shared_ptr;
+
 #ifndef READER
 #define READER
-class reader {
+
+class Reader {
    public:
     /* create a reader that reads each line of the file and appends it to the
      * writer's queue
      */
-    reader(const std::string& name, writer& mywriter);
+    Reader(const std::string& name, shared_ptr<Writer> mywriter);
     /* perform the reading from the file */
     void run();
-
+     /* Validate read file */
+    bool init();
+    
    private:
     std::ifstream in;
-    writer& thewriter;
+    const std::string& name;
+    shared_ptr<Writer> theWriter;
 };
 #endif

@@ -1,8 +1,9 @@
 #ifndef SHORTESTJOBFIRST
 #define SHORTESTJOBFIRST
 
+#include "Schedule.h"
 
-class SJF {
+class SJF : public Schedule {
     public:
 
 

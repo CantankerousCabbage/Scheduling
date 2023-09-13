@@ -1,8 +1,9 @@
-#ifndef FIFO
-#define FIFO
+#ifndef FINFO
+#define FINFO
 
+#include "Schedule.h"
 
-class FIFO {
+class FIFO : public Schedule{
     public:
 
 

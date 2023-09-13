@@ -1,8 +1,9 @@
 #ifndef ROUNDROBIN
 #define ROUNDROBIN
 
+#include "Schedule.h"
 
-class RR {
+class RR : public Schedule{
     public:
 
 
