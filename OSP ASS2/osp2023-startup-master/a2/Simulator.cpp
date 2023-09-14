@@ -22,5 +22,5 @@
 
     
     void Simulator::runSchedule(){
-
+        this->policy->run();
     }

@@ -20,15 +20,63 @@ class pcb {
         pcb(id_type id, time_type time);
         ~pcb();
 
-        void toString();
-
         // max and min duration for a process in our system.
         static constexpr osp2023::time_type MAX_DURATION = 100;
         static constexpr osp2023::time_type MIN_DURATION = 10;
+        static time_type timeSinceArrival;
 
-    private:
+        void static init();
+        /*
+        *Returns process ID
+        */
+        id_type getID();
 
+        /*
+        *Returns burst time
+        */
+        time_type getTotalTime();
 
+        /*
+        *Returns time used so far by process
+        */
+        time_type getTimeUsed();
+
+        /*
+        *Returns processess total wait time
+        */
+        time_type getWaitTime();
+
+        /*
+        *Returns last time process was on CPU
+        */
+        time_type getLastTimeCPU();
+
+        /*
+        *Time used + time waiting
+        */
+        time_type getTurnAroundTime();
+
+        /*
+        *Returns Response time
+        */
+        time_type getResponseTime();
+
+        /*
+        *Increments time used
+        */
+        void setTimeUsed(time_type timeUsed);
+
+        /*
+        *Increments time waited by process (total process time - time_used)
+        */
+        void setWaitTime();
+
+        /*
+        *Sets the last time process was on CPU. Initialises response time if -1
+        */
+        void setLastTimeCPU(time_type lastCPUTime);
+    
+    protected:
         // the unique process id
         osp2023::id_type id;
         // the total time that a process / job should run for
@@ -39,4 +87,7 @@ class pcb {
         // how much time has this process spent waiting for the cpu?
         osp2023::time_type total_wait_time;
         // what time was this process last on the cpu?
+        osp2023::time_type last_time_onCPU;
+        //time take for process to first be executed from scheduler
+        osp2023::time_type responseTime;
 };
