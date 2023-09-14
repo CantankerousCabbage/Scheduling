@@ -6,6 +6,9 @@
 class sjf : public Schedule {
     public:
 
+    sjf();
+    ~sjf();
+
 
 };
 

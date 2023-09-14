@@ -4,7 +4,7 @@
 #include "pcb.h"
 
 #define PRECISION 5
-#define SPACING 20
+#define SPACING 16
 
 #include <vector>
 #include <fstream>
@@ -43,5 +43,6 @@ class Schedule {
 
         
 };
+
 
 #endif

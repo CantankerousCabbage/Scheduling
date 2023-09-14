@@ -1,4 +1,5 @@
 
+#include "Schedule.h"
 #include "Driver.h"
 #include "Loader.h"
 #include "Simulator.h"
@@ -15,11 +16,12 @@ using std::map;
 #define STANDARD_COMMAND 2
 #define RR_COMMAND 3
 
-#define FIFO "fifo"
-#define SJF "sjf"
-#define RR "rr"
+// #define FIFO "./fifo"
+// #define SJF "./sjf"
+// #define RR "./rr"
 
 bool parseCommand(int argc, char** argv, string& input, string& policy);
+void cmdError();
 
 // Your programs are expected to produce the following output on the screen:
 // 1. For each process: Process ID, burst time, turnaround time, waiting time, and response time.
@@ -34,19 +36,26 @@ int main(int argc, char** argv) {
     success = parseCommand(argc, argv, input, policy);
     
     if(success){
-        unique_ptr<Simulator> simulator = std::make_unique<Simulator>(policy);
+        std::cout << "here 1" << std::endl;
         shared_ptr<vector<shared_ptr<pcb>>> kernelSpace = std::make_shared<vector<shared_ptr<pcb>>>();
+        success = fetchData->initData(input, kernelSpace);
 
-        fetchData->initData(input, kernelSpace);
-        simulator->runSchedule();
-    }
-    
+        if(success){
+             std::cout << "here 1" << std::endl;
+            unique_ptr<Simulator> simulator = std::make_unique<Simulator>(policy, kernelSpace);
+            simulator->runSchedule();
+        }
+            
+    } 
+    if(!success) cmdError();
+
     return EXIT_SUCCESS;
 }
 
 bool parseCommand(int argc, char** argv, string& input, string& policy) {
     bool success = false;
     policy = string(argv[0]);
+     std::cout << policy << std::endl;
     success = (policy == FIFO) || (policy == SJF) || 
     (policy == RR);
 

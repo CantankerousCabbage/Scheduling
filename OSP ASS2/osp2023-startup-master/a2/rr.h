@@ -6,6 +6,9 @@
 class rr : public Schedule{
     public:
 
+    rr();
+    ~rr();
+
 
 };
 

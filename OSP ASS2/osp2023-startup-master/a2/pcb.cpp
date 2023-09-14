@@ -9,9 +9,9 @@
     pcb::pcb(id_type id, time_type time) : id{id}, total_time{time}{
        
        //Initialise all values outised of burst and ID as unset
-        time_type time_used = osp2023::initial_time;
-        time_type total_wait_time = osp2023::initial_time;
-        time_type last_time_onCPU = osp2023::time_not_set;
+        this->time_used = osp2023::initial_time;
+        this->total_wait_time = osp2023::initial_time;
+        this->last_time_onCPU = osp2023::time_not_set;
     };
     pcb::~pcb(){};
 

@@ -7,7 +7,7 @@
 
     Simulator::Simulator(string& policy, shared_ptr<vector<shared_ptr<pcb>>> kernelSpace) : kernelSpace{kernelSpace} {
         if(policy == FIFO){
-            this->policy = make_unique<fifo>();
+            this->policy = make_unique<fifo>(kernelSpace);
         } 
         else if(policy == SJF){
             this->policy = make_unique<sjf>();

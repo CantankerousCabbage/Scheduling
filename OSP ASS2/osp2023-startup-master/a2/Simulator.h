@@ -1,9 +1,9 @@
 #ifndef SIMULATOR
 #define SIMULATOR
 
-#define FIFO "fifo"
-#define SJF "sjf"
-#define RR "rr"
+#define FIFO "./fifo"
+#define SJF "./sjf"
+#define RR "./rr"
 
 #include "rr.h"
 #include "fifo.h"

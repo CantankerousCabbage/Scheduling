@@ -6,6 +6,6 @@ namespace osp2023 {
     using time_type = long long;
     using id_type = int;
     // constant that can be used to initialise a time to not having been set
-    extern constexpr time_type time_not_set = -1;
-    extern constexpr time_type initial_time = 0;
+    const time_type time_not_set = -1;
+    const time_type initial_time = 0;
 }
