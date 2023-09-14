@@ -14,19 +14,19 @@ clean_sjf:
 clean_rr:
 	rm -rf ppd *.o
 
-fifo: Driver.o Loader.o Simulator.o pcb.o FIFO.o
+fifo: Driver.o Loader.o Simulator.o pcb.o fifo.o
 	g++ -Wall -Werror -std=c++14 -g -O -o $@ $^	-lpthread
 
 %.o: %.cpp
 	g++ -Wall -Werror -std=c++14 -g -O -c $^
 
-sjf: Driver.o Loader.o Simulator.o pcb.o SJF.o
+sjf: Driver.o Loader.o Simulator.o pcb.o sjf.o
 	g++ -Wall -Werror -std=c++14 -g -O -o $@ $^	-lpthread
 
 %.o: %.cpp
 	g++ -Wall -Werror -std=c++14 -g -O -c $^
 
-rr: Driver.o Loader.o Simulator.o pcb.o RR.o
+rr: Driver.o Loader.o Simulator.o pcb.o rr.o
 	g++ -Wall -Werror -std=c++14 -g -O -o $@ $^	-lpthread
 
 %.o: %.cpp

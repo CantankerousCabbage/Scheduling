@@ -14,13 +14,16 @@ using std::map;
 
 #define STANDARD_COMMAND 2
 #define RR_COMMAND 3
+
 #define FIFO "fifo"
 #define SJF "sjf"
 #define RR "rr"
 
 bool parseCommand(int argc, char** argv, string& input, string& policy);
 
-
+// Your programs are expected to produce the following output on the screen:
+// 1. For each process: Process ID, burst time, turnaround time, waiting time, and response time.
+// 2. For all processes: Average turnaround time, average waiting time, and average response time
 
 int main(int argc, char** argv) {
 
@@ -32,7 +35,10 @@ int main(int argc, char** argv) {
     
     if(success){
         unique_ptr<Simulator> simulator = std::make_unique<Simulator>(policy);
+        shared_ptr<vector<shared_ptr<pcb>>> kernelSpace = std::make_shared<vector<shared_ptr<pcb>>>();
 
+        fetchData->initData(input, kernelSpace);
+        simulator->runSchedule();
     }
     
     return EXIT_SUCCESS;
@@ -48,7 +54,7 @@ bool parseCommand(int argc, char** argv, string& input, string& policy) {
         success = success && (argc == RR_COMMAND);
         input = string(argv[2]);
     } else {
-        success = success && (argc == RR_COMMAND);
+        success = success && (argc == STANDARD_COMMAND);
         input = string(argv[1]);
     }
      

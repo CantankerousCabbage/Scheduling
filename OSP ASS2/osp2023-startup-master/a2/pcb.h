@@ -1,5 +1,9 @@
+#include <fstream>
 #include <iostream>
 #include "types.h"
+
+using osp2023::id_type;
+using osp2023::time_type;
 
 #pragma once  // tells the compiler to only include this file once
               /**
@@ -10,19 +14,29 @@
  * their definitions in types.h.
  **/
 class pcb {
-    // the unique process id
-    osp2023::id_type id;
-    // the total time that a process / job should run for
-    osp2023::time_type total_time;
-    // the time that has been used so far for this process
-    osp2023::time_type time_used;
-    // the priority level for this process
-    // how much time has this process spent waiting for the cpu?
-    osp2023::time_type total_wait_time;
-    // what time was this process last on the cpu?
 
    public:
-    // max and min duration for a process in our system.
-    static constexpr osp2023::time_type MAX_DURATION = 100;
-    static constexpr osp2023::time_type MIN_DURATION = 10;
+
+        pcb(id_type id, time_type time);
+        ~pcb();
+
+        void toString();
+
+        // max and min duration for a process in our system.
+        static constexpr osp2023::time_type MAX_DURATION = 100;
+        static constexpr osp2023::time_type MIN_DURATION = 10;
+
+    private:
+
+
+        // the unique process id
+        osp2023::id_type id;
+        // the total time that a process / job should run for
+        osp2023::time_type total_time;
+        // the time that has been used so far for this process
+        osp2023::time_type time_used;
+        // the priority level for this process
+        // how much time has this process spent waiting for the cpu?
+        osp2023::time_type total_wait_time;
+        // what time was this process last on the cpu?
 };

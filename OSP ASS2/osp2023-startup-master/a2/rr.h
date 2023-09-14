@@ -3,7 +3,7 @@
 
 #include "Schedule.h"
 
-class RR : public Schedule{
+class rr : public Schedule{
     public:
 
 
