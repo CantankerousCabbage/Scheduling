@@ -24,7 +24,7 @@ using std::vector;
 class Simulator {
     public:
 
-        Simulator(string& policy, shared_ptr<vector<shared_ptr<pcb>>> kernelSpace);
+        Simulator(string& policy, shared_ptr<vector<shared_ptr<pcb>>> kernelSpace, shared_ptr<time_type> quantum);
         ~Simulator();
 
         /*

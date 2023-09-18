@@ -1,9 +1,11 @@
 #include <fstream>
 #include <iostream>
+#include <memory>
 #include "types.h"
 
 using osp2023::id_type;
 using osp2023::time_type;
+using std::shared_ptr;
 
 #pragma once  // tells the compiler to only include this file once
               /**
@@ -24,6 +26,8 @@ class pcb {
         static constexpr osp2023::time_type MAX_DURATION = 100;
         static constexpr osp2023::time_type MIN_DURATION = 10;
         static time_type timeSinceArrival;
+
+        friend bool operator < (const shared_ptr<pcb>& a,const shared_ptr<pcb>& b);
 
         void static init();
         /*

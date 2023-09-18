@@ -15,10 +15,10 @@
     };
     pcb::~pcb(){};
 
-    bool operator<(pcb& a, pcb& b){
-        return (a.getTotalTime() < b.getTotalTime());
+    //Overload our equality operator for sorting.
+    bool operator < (const shared_ptr<pcb>& a,const shared_ptr<pcb>& b){
+        return (a->getTotalTime() < b->getTotalTime());
     }
-
 
     void pcb::init(){
        timeSinceArrival = 0;

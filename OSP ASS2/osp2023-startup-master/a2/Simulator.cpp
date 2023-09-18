@@ -1,11 +1,7 @@
 #include "Simulator.h"
 
-//     #define FIFO "fifo"
-// #define SJF "sjf"
-// #define RR "rr"
-
-
-    Simulator::Simulator(string& policy, shared_ptr<vector<shared_ptr<pcb>>> kernelSpace) : kernelSpace{kernelSpace} {
+    Simulator::Simulator(string& policy, shared_ptr<vector<shared_ptr<pcb>>> kernelSpace, shared_ptr<time_type> quantum)
+     : kernelSpace{kernelSpace} {
         if(policy == FIFO){
             this->policy = make_unique<fifo>(kernelSpace);
         } 
@@ -13,7 +9,7 @@
             this->policy = make_unique<sjf>(kernelSpace);
         }
         else {
-           this->policy = make_unique<rr>(); 
+           this->policy = make_unique<rr>(kernelSpace, quantum); 
         }
     };
 
@@ -22,5 +18,6 @@
 
     
     void Simulator::runSchedule(){
-        this->policy->run();
+        
+           this->policy->run(); 
     }
