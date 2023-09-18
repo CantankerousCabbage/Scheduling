@@ -6,8 +6,14 @@
 class sjf : public Schedule {
     public:
 
-    sjf();
+    sjf(shared_ptr<vector<shared_ptr<pcb>>> kernelSpace);
     ~sjf();
+
+    virtual void run();
+
+    void sortQueue();
+
+    void printTest();
 
 
 };

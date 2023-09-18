@@ -12,7 +12,6 @@ class fifo : public Schedule{
 
         virtual void run();
 
-
 };
 
 #endif

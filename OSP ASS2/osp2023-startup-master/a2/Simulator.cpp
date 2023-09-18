@@ -10,7 +10,7 @@
             this->policy = make_unique<fifo>(kernelSpace);
         } 
         else if(policy == SJF){
-            this->policy = make_unique<sjf>();
+            this->policy = make_unique<sjf>(kernelSpace);
         }
         else {
            this->policy = make_unique<rr>(); 
