@@ -15,6 +15,10 @@
     };
     pcb::~pcb(){};
 
+    bool operator<(pcb& a, pcb& b){
+        return (a.getTotalTime() < b.getTotalTime());
+    }
+
 
     void pcb::init(){
        timeSinceArrival = 0;

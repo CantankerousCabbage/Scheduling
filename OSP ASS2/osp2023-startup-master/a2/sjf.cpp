@@ -46,7 +46,7 @@ void sjf::sortQueue(){
             shared_ptr<pcb> c2 = (*kernelSpace)[j];
 
             
-            if(c2->getTotalTime() < c1->getTotalTime()){
+            if(c2 < c1){
                 index = j;
             }
             

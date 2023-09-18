@@ -61,5 +61,6 @@
         *AvgWait = wait_total / numP;
         *AvgResp = resp_total / numP;
     }
+
     
     void Schedule::run(){};
