@@ -1,7 +1,7 @@
 #include "rr.h"
 
-    rr::rr(shared_ptr<vector<shared_ptr<pcb>>> kernelSpace, shared_ptr<time_type> quantum) 
-    : Schedule(kernelSpace), quantum{quantum} {};
+    rr::rr(shared_ptr<vector<shared_ptr<pcb>>> kernelSpace, shared_ptr<vector<shared_ptr<pcb>>> complete, shared_ptr<time_type> quantum) 
+    : Schedule(kernelSpace, complete), quantum{quantum} {};
     rr::~rr(){};
 
     void rr::run(){
@@ -27,7 +27,7 @@
             //Calculate time permitted 
             time_type timeAllowed = (timeNeeded > *quantum) ? *quantum : timeNeeded;
             
-            bool complete = (timeAllowed == timeNeeded) ? true : false;
+            bool pComplete = (timeAllowed == timeNeeded) ? true : false;
             //Set time used
             p->setTimeUsed(timeAllowed);
             //Increment total process time
@@ -35,10 +35,11 @@
             //Process complete register CPU departure time
             p->setLastTimeCPU(pcb::timeSinceArrival);
 
-            if(!complete){
+            if(!pComplete){
                 (*kernelSpace).push_back(p);
 
             } else {
+                (*complete).push_back(p);
                 //Output metrics ID. BurstTime. TT -time. TotalWait. Response
                 this->lineFormat(
                     p->getID(), 
@@ -51,6 +52,5 @@
         };
 
         this->printAverage();
-    
 
     }

@@ -10,15 +10,14 @@ using std::vector;
 class rr : public Schedule{
     public:
 
-    rr(shared_ptr<vector<shared_ptr<pcb>>> kernelSpace, shared_ptr<time_type> quantum);
+    rr(shared_ptr<vector<shared_ptr<pcb>>> kernelSpace, shared_ptr<vector<shared_ptr<pcb>>> complete, shared_ptr<time_type> quantum);
     ~rr();
 
     virtual void run();
 
     private:
         shared_ptr<time_type> quantum;
-
-
+        
 };
 
 #endif

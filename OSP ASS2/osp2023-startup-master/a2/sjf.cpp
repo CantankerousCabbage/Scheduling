@@ -1,6 +1,6 @@
 #include "sjf.h"
 
-    sjf::sjf(shared_ptr<vector<shared_ptr<pcb>>> kernelSpace) : Schedule(kernelSpace){};
+    sjf::sjf(shared_ptr<vector<shared_ptr<pcb>>> kernelSpace, shared_ptr<vector<shared_ptr<pcb>>> complete) : Schedule(kernelSpace, complete){};
     sjf::~sjf(){};
 
     void sjf::run(){

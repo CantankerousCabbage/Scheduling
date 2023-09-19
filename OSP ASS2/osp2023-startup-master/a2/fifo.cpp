@@ -1,7 +1,7 @@
 #include "fifo.h"
 
 
-    fifo::fifo(shared_ptr<vector<shared_ptr<pcb>>> kernelSpace) : Schedule(kernelSpace) {}
+    fifo::fifo(shared_ptr<vector<shared_ptr<pcb>>> kernelSpace, shared_ptr<vector<shared_ptr<pcb>>> complete) : Schedule(kernelSpace, complete) {}
     fifo::~fifo(){}
 
     void fifo::run(){

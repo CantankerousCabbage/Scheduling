@@ -24,7 +24,7 @@ using std::vector;
 class Simulator {
     public:
 
-        Simulator(string& policy, shared_ptr<vector<shared_ptr<pcb>>> kernelSpace, shared_ptr<time_type> quantum);
+        Simulator(string& policy, shared_ptr<vector<shared_ptr<pcb>>> kernelSpace, shared_ptr<vector<shared_ptr<pcb>>> complete,  shared_ptr<time_type> quantum);
         ~Simulator();
 
         /*
@@ -48,8 +48,7 @@ class Simulator {
 
     private:
         unique_ptr<Schedule> policy;
-        shared_ptr<vector<shared_ptr<pcb>>> kernelSpace;
-
+        
 };
 
 #endif

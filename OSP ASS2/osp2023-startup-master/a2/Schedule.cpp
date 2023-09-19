@@ -1,7 +1,7 @@
 #include "Schedule.h"
 
     Schedule::Schedule(){};
-    Schedule::Schedule(shared_ptr<vector<shared_ptr<pcb>>> kernelSpace) : kernelSpace{kernelSpace} {
+    Schedule::Schedule(shared_ptr<vector<shared_ptr<pcb>>> kernelSpace, shared_ptr<vector<shared_ptr<pcb>>> complete) : kernelSpace{kernelSpace}, complete{complete}{
     };
     Schedule::~Schedule(){};
 
@@ -49,14 +49,18 @@
         time_type TT_total = 0;
         time_type wait_total = 0;
         time_type resp_total = 0;
-        unsigned numP = kernelSpace->size();
+
+        shared_ptr<vector<shared_ptr<pcb>>> source = (kernelSpace->size() > EMPTY) ? kernelSpace : complete;
+
+        unsigned numP = source->size();
         
         for(unsigned i = 0; i < numP; i++){
-            TT_total += (*kernelSpace)[i]->getTurnAroundTime();
-            wait_total += (*kernelSpace)[i]->getWaitTime();
-            resp_total += (*kernelSpace)[i]->getResponseTime();
+            TT_total += (*source)[i]->getTurnAroundTime();
+            wait_total += (*source)[i]->getWaitTime();
+            resp_total += (*source)[i]->getResponseTime();
         }
 
+        std::cout << "AvgTT: " << *AvgTT << ", AvgWait: " << *AvgWait << ", AvgResp: " << *AvgResp << std::endl;
         *AvgTT = TT_total / numP;
         *AvgWait = wait_total / numP;
         *AvgResp = resp_total / numP;

@@ -40,11 +40,12 @@ int main(int argc, char** argv) {
     if(success){
     
         shared_ptr<vector<shared_ptr<pcb>>> kernelSpace = std::make_shared<vector<shared_ptr<pcb>>>();
+        shared_ptr<vector<shared_ptr<pcb>>> complete = std::make_shared<vector<shared_ptr<pcb>>>();
         success = fetchData->initData(input, kernelSpace);
 
         if(success){
              
-            unique_ptr<Simulator> simulator = std::make_unique<Simulator>(policy, kernelSpace, quantum);
+            unique_ptr<Simulator> simulator = std::make_unique<Simulator>(policy, kernelSpace, complete, quantum);
             simulator->runSchedule();
         }
             

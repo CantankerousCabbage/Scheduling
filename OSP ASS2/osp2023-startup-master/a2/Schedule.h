@@ -21,11 +21,13 @@ using std::make_unique;
 using std::shared_ptr;
 using std::unique_ptr;
 
+#define EMPTY 0
+
 class Schedule {
     public:
 
     Schedule();
-    Schedule(shared_ptr<vector<shared_ptr<pcb>>> kernelSpace);
+    Schedule(shared_ptr<vector<shared_ptr<pcb>>> kernelSpace, shared_ptr<vector<shared_ptr<pcb>>> complete);
     virtual ~Schedule();
     virtual void run();
 
@@ -40,6 +42,7 @@ class Schedule {
 
     protected:
         shared_ptr<vector<shared_ptr<pcb>>> kernelSpace;
+        shared_ptr<vector<shared_ptr<pcb>>> complete;
 
         
 };
