@@ -33,9 +33,15 @@ class Schedule {
 
     void printHeading();
     void printAverage();
+    /*
+    * Formats our results output
+    */
     void lineFormat(id_type id,  time_type burst, time_type turnAround, 
         time_type waitTime, time_type responseTime);
 
+    /*
+    * Calculates average metrics
+    */
     void genAverages(shared_ptr<time_type> AvgTT, shared_ptr<time_type> AvgWait, shared_ptr<time_type> AvgResp);
 
     time_type timeSinceArrival;

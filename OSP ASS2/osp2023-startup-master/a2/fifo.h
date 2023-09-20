@@ -3,7 +3,9 @@
 
 #include "Schedule.h"
 
-
+/*
+* First in first out scheduling policy
+*/
 class fifo : public Schedule{
     public:
 

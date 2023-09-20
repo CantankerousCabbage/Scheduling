@@ -7,6 +7,7 @@
 using std::vector;
 #define FRONT 0
 
+
 class rr : public Schedule{
     public:
 
@@ -15,6 +16,7 @@ class rr : public Schedule{
 
     virtual void run();
 
+    //Quantom value for rr plicy
     private:
         shared_ptr<time_type> quantum;
         

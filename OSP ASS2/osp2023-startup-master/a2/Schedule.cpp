@@ -60,7 +60,6 @@
             resp_total += (*source)[i]->getResponseTime();
         }
 
-        std::cout << "AvgTT: " << *AvgTT << ", AvgWait: " << *AvgWait << ", AvgResp: " << *AvgResp << std::endl;
         *AvgTT = TT_total / numP;
         *AvgWait = wait_total / numP;
         *AvgResp = resp_total / numP;

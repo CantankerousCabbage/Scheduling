@@ -31,6 +31,8 @@ bool Loader::splitter(string& toSplit, shared_ptr<id_type> id, shared_ptr<time_t
     int index = toSplit.find(DELIM);
     bool valid = (index != NPOS) ? true : false; 
     //Try int and long long if not input invalid
+
+    //Attempt type conversions within try/catch
     if(valid){
             try
         { 

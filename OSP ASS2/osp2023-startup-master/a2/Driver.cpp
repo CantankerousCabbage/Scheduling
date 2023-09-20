@@ -17,11 +17,14 @@ using std::map;
 #define STANDARD_COMMAND 2
 #define RR_COMMAND 3
 
-// #define FIFO "./fifo"
-// #define SJF "./sjf"
-// #define RR "./rr"
-
+/*
+* Parses command line values
+*/
 bool parseCommand(int argc, char** argv, string& input, string& policy, shared_ptr<time_type> quantum);
+
+/*
+* Outputs error on invalid command line
+*/
 void cmdError();
 
 // Your programs are expected to produce the following output on the screen:
@@ -30,21 +33,24 @@ void cmdError();
 
 int main(int argc, char** argv) {
 
+    //Initialise global variables
     bool success;
     string input;
     string policy;
     unique_ptr<Loader> fetchData = std::make_unique<Loader>();
     shared_ptr<time_type> quantum = std::make_shared<time_type>();
+
+    //Parse the command line
     success = parseCommand(argc, argv, input, policy, quantum);
     
+    //On valid command line validated datafile
     if(success){
-    
         shared_ptr<vector<shared_ptr<pcb>>> kernelSpace = std::make_shared<vector<shared_ptr<pcb>>>();
         shared_ptr<vector<shared_ptr<pcb>>> complete = std::make_shared<vector<shared_ptr<pcb>>>();
         success = fetchData->initData(input, kernelSpace);
 
-        if(success){
-             
+        //If data valid execute program loop
+        if(success){ 
             unique_ptr<Simulator> simulator = std::make_unique<Simulator>(policy, kernelSpace, complete, quantum);
             simulator->runSchedule();
         }
